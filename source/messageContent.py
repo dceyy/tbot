@@ -1,8 +1,5 @@
-import splitMessage
-import random
-import source.db as db
-import time
-from source import getChatAdministrator
+from source import splitMessage, db, getChatAdministrator
+import time,random
 karaliste =[]
 with open("karaliste.txt", "r", encoding="utf-8") as f:
     for i in f:

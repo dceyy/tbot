@@ -4,7 +4,7 @@ import logging, random, asyncio
 from emoji import emojize
 from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, InlineKeyboardButton, InlineKeyboardMarkup,ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters, InlineQueryHandler, CallbackQueryHandler
-import splitMessage, source.db as db, time
+import source.splitMessage as splitMessage, source.db as db, time
 
 
 async def new_user(update, context, time=40):

@@ -1,7 +1,6 @@
 import logging, random, asyncio
 from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, InlineKeyboardButton, InlineKeyboardMarkup,ReplyKeyboardMarkup, KeyboardButton
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters, InlineQueryHandler, CallbackQueryHandler
-
 from source import getChatAdministrator, messageContent, newUserWelcome, splitMessage, db
 from datetime import datetime, timedelta
 
@@ -82,6 +81,8 @@ if __name__=="__main__":
     app.add_handler(start_handler)
     help_handler = CommandHandler('help', help)
     app.add_handler(help_handler)
+    info_handler = CommandHandler('info', info)
+    app.add_handler(info_handler)
     button_callback_handler = CallbackQueryHandler(button_callback, pattern='sohbet_kurallari|ben|robot_degilim')
     app.add_handler(button_callback_handler)
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
