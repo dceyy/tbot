@@ -3,7 +3,10 @@ from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, 
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters, InlineQueryHandler, CallbackQueryHandler
 from source import getChatAdministrator, messageContent, newUserWelcome, splitMessage, db
 from datetime import datetime, timedelta
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
+api_key = os.getenv("API_KEY")
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -15,7 +18,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     if query.data == "sohbet_kurallari":
-        message="Konuşmalar kibar ve saygılı olmalı 💬\nSohbet içeriği uygun olmalı 📜\nSpam yapmak yasaktır 🚫 \nYa da keyfinize bakın amk🤪"
+        message="Konuşmalar kibar ve saygılı olmalı 💬\ nSohbet içeriği uygun olmalı 📜\nSpam yapmak yasaktır 🚫 \nYa da keyfinize bakın amk🤪"
         await query.message.edit_text(text=message)
     elif query.data == "ben":
         await query.message.edit_text(text="Ben Muhtar! Doğan Ceylancı tarafından yapılmış bir botum.")
@@ -76,7 +79,7 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Üzgünüm, şu anda geliştirme aşamasında olduğum için bu komutu anlayamıyorum. Ama ileride anlayacağım, umarım. 🤖")
 
 if __name__=="__main__":
-    app = ApplicationBuilder().token('6031813671:AAFkDTvYOkZfZcUqSafTB8GYng28izsOmDw').build()
+    app = ApplicationBuilder().token(api_key).build()
     start_handler = CommandHandler('start', start)
     app.add_handler(start_handler)
     help_handler = CommandHandler('help', help)
