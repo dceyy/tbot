@@ -79,7 +79,7 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Üzgünüm, şu anda geliştirme aşamasında olduğum için bu komutu anlayamıyorum. Ama ileride anlayacağım, umarım. 🤖")
 
 if __name__=="__main__":
-    app = ApplicationBuilder().token(api_key).build()
+    app = ApplicationBuilder().token('6031813671:AAFkDTvYOkZfZcUqSafTB8GYng28izsOmDw').build()
     start_handler = CommandHandler('start', start)
     app.add_handler(start_handler)
     help_handler = CommandHandler('help', help)
